@@ -22,12 +22,10 @@ public class FunctionInterpreterService {
         ScriptEngine engine = manager.getEngineByName("JavaScript");
 
         try {
-            // Попытка выполнить функцию
             engine.eval(function);
             Object result = engine.eval(arguments);
             return "Result: " + result.toString();
         } catch (ScriptException e) {
-            // Отлавливаем и анализируем исключение
             if (e.getMessage().contains("ReferenceError")) {
                 return "Error: function or arguments are not correct." + e.getMessage();
             } else {
